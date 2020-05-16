@@ -1,0 +1,37 @@
+version: '3.4'
+services:
+    redis:
+        image: redis:alpine
+        networks:
+            - frontend
+    db:
+        image: postgres:9.6
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        networks:
+            - backend
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+    vote:
+        image: nived15/voteapp
+        ports:
+            - '80:80'
+        networks:
+            - frontend
+    result:
+        image: nived15/vote-results
+        ports:
+            - '5001:80'
+        networks:
+            - backend
+    worker:
+        image: bretfisher/examplevotingapp_worker:java
+        networks:
+            - frontend
+            - backend
+networks:
+    frontend:
+    backend:
+volumes:
+    db-data:
+
