@@ -1,11 +1,11 @@
 ```
 
-The vote interface is then available on port 31000 on each host of the cluster, the result one is available on port 31001.
+The vote interface is then available on port 80 on each host of the cluster, the result one is available on port 5001.
 
 Architecture
 -----
 
-![Architecture diagram](architecture.png)
+[Architecture diagram](architecture.png)
 
 * A front-end web app in [Python](/vote) or [ASP.NET Core](/vote/dotnet) which lets you vote between two options
 * A [Redis](https://hub.docker.com/_/redis/) or [NATS](https://hub.docker.com/_/nats/) queue which collects new votes
