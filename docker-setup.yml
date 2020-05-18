@@ -12,12 +12,6 @@
       src: files/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
 
-  - name: Ensure epel repositiory is present
-    yum:
-      name: epel-release
-      state: present
-      update_cache: true
-
   - name: Re cache all repositiory
     package_facts:
       manager: auto
