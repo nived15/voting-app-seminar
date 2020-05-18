@@ -12,6 +12,16 @@
       url: "{{ url }}"
       dest: /etc/yum.repos.d/docker-ce.repo
 
+  - lineinfile:
+      path: /etc/yum.repos.d/docker-ce.repo
+      regexp: $releasever
+      insertafter: 31
+
+  - lineinfile:
+      path: /etc/yum.repos.d/docker-ce.repo
+      regexp: $basearch
+      insertafter: x86_64
+
   - name: Ensure epel repositiory is present
     yum:
       name: epel-release
