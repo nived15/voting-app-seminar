@@ -10,6 +10,7 @@
 
   - name: Ensure Docker repo is present
     yum_repository:
+      name: docker
       file: docker-ce
       baseurl: "{{ docker_repo }}"
       async: true
