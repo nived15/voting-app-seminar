@@ -1,0 +1,38 @@
+- name: Playbook to setup docker and docker compose
+  hosts: localhost
+  remote_user: root
+
+  vars:
+    url: https://download.docker.com/linux/fedora/docker-ce.repo
+    docker_compose_script: https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
+
+  tasks:
+  - name: Ensure docker repository is configured
+    get_url:
+      url: "{{ url }}"
+      dest: /etc/yum.repos.d/docker-ce.repo
+
+  - name: Ensure epel repositiory is present
+    yum:
+      name: epel-release
+      state: present
+      update_cache: true
+
+  - name: Re cache all repositiory
+    package_facts:
+      manager: auto
+
+  - name: Ensure docker compose is setup
+    get_url:
+      url: "{{ docker_compose_script }}"
+      dest: /bin/docker-compose
+      mode: 0755
+
+  - name: Ensure docker is installed
+    shell: yum install --nobest docker-ce -y 
+
+  - name: Ensure docker service is up and running
+    service:
+      name: docker
+      state: started
+      enabled: true
