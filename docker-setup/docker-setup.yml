@@ -7,19 +7,16 @@
     docker_compose_script: https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
 
   tasks:
-  - name: Ensure all packages are upgraded
-    yum:
-      name: '*'
-      state: latest
 
-  - name: Ensure Docker intsaller is downloaded
-    get_url:
-      url: "{{ docker_script }}"
-      dest: /root/install_docker.sh
-      mode: 0700
+  - name: Ensure Docker repo is present
+    copy:
+      src: files/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.docker-ce.repo
 
   - name: Ensure docker is installed 
-    shell: /root/install_docker.sh
+    yum:
+      name: docker-ce
+      state: present
 
   - name: Ensure docker service is enabled and running
     service:
