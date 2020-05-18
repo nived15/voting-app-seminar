@@ -3,15 +3,16 @@
   remote_user: root
 
   vars:
-    docker_script: https://get.docker.com/
+    docker_repo: https://download.docker.com/linux/fedora/docker-ce.repo
     docker_compose_script: https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
 
   tasks:
 
   - name: Ensure Docker repo is present
-    copy:
-      src: files/docker-ce.repo
-      dest: /etc/yum.repos.d/docker-ce.docker-ce.repo
+    yum_repository:
+      file: docker-ce
+      baseurl: "{{ docker_repo }}"
+      async: true
 
   - name: Ensure docker is installed 
     yum:
