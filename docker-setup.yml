@@ -8,21 +8,9 @@
 
   tasks:
   - name: Ensure docker repository is configured
-    get_url:
-      url: "{{ url }}"
+    copy:
+      src: files/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
-
-  - lineinfile:
-      path: /etc/yum.repos.d/docker-ce.repo
-      state: present
-      regexp: $releasever
-      insertafter: 31
-
-  - lineinfile:
-      path: /etc/yum.repos.d/docker-ce.repo
-      state: present
-      regexp: $basearch
-      insertafter: x86_64
 
   - name: Ensure epel repositiory is present
     yum:
