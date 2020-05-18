@@ -1,6 +1,9 @@
 #!/bin/bash
 echo -e "INSTALLING CORE PACKAGES FOR DEMO\n"
+yum repolist
 yum install git epel-release bash-completion vim tree yum-utils -y
+
+yum repolist
 yum install ansible -y
 
 echo -e "CONFIGURING GIT FOR USER NIVEDV"
