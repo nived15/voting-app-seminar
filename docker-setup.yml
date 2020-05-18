@@ -14,11 +14,13 @@
 
   - lineinfile:
       path: /etc/yum.repos.d/docker-ce.repo
+      state: present
       regexp: $releasever
       insertafter: 31
 
   - lineinfile:
       path: /etc/yum.repos.d/docker-ce.repo
+      state: present
       regexp: $basearch
       insertafter: x86_64
 
