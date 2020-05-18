@@ -1,0 +1,34 @@
+- name: Playbook to setup docker and docker compose
+  hosts: localhost
+  remote_user: root
+
+  vars:
+    docker_script: https://get.docker.com/
+    docker_compose_script: https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
+
+  tasks:
+  - name: Ensure all packages are upgraded
+    yum:
+      name: '*'
+      state: latest
+
+  - name: Ensure Docker intsaller is downloaded
+    get_url:
+      url: "{{ docker_script }}"
+      dest: /root/install_docker.sh
+      mode: 0700
+
+  - name: Ensure docker is installed 
+    shell: /root/install_docker.sh
+
+  - name: Ensure docker service is enabled and running
+    service:
+      name: docker
+      state: started
+      enabled: true
+
+  - name: Ensure docker compose is installed
+    get_url:
+        url: https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
+        dest: /usr/bin/docker-compose
+        mode: 0755

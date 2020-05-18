@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "INSTALLING CORE PACKAGES FOR DEMO\n"
-yum install git bash-completion vim tree -y
+yum install git bash-completion vim tree yum-utils -y
 
 echo -e "CONFIGURING GIT FOR USER NIVEDV"
 echo -e 'Username is set!\n'
