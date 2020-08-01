@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: result-app-deploy
+  labels: 
+    name: result-app-deploy
+    type: sample-voting-app
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      name: result-app-deploy
+      type: sample-voting-app
+  template: 
+    metadata:
+      name: result-pod
+      labels: 
+        name: result-app-deploy
+        type: sample-voting-app
+    spec:
+      containers:
+        - name: result-app
+          image: nived15/vote-results
+          ports:
+          - containerPort: 80
+
