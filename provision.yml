@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files: 
+    - vars.yml
+
+  tasks:
+  - name: Create new droplet
+    digital_ocean_droplet:
+        state: present
+        name: test1
+        oauth_token: "{{ TOKEN }}"
+        size: 16gb
+        ssh_keys: 28018755
+        unique_name: true
+        region: nyc1
+        image: centos-8-x64
+    register: my_droplet
+
+  - name: Debug the Ip Address out
+    debug: 
+      msg: "IpAddress is {{ my_droplet.data.ip_address }} "
+  - name: Add ssh key inside the droplet
+    digital_ocean_sshkey:
+        name: laptop_key
+        oauth_token: "{{ TOKEN }}"
+        ssh_pub_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPonz6lHyD/sMFY/NqNSg12wQhT484rq3Bpyg0OYzcEtDdB66Haaw6Y2VetaLWM3Tlq3PhZ9NjgdDN+7OB0+BDwRzi+8KrzUqgH3Xs8Zu+LAfQJ6j3LXsGwbdYqPEol4WzDqw1ik2fKvUWaxtUiMZqPfO0847PH3M86BAS6ZqYY0lDRvLNlotZfaYAk9C46JOAnpFRGfRSc2V8iJP7OHOUh0tVOBKEfy0wf99hAesJnnbXB8R+8Hl5kBiMO3UzFAUJdWoQB+bJ5FISl48iNjWnWw/5ZMR3HfA4HMjkqEQodsUbHsQ8gxAuObJbBLxFkovSL4W4Wio+xr2veYcs2Xj3ienOx0KSB33yYGzrEpcoftT0amXJlXxBwSsZPz9US4qf1vfD/e/ebEsVq4uWdWXCbbsmmiBh/+ziQ/BKAyfdHgFmBuUKRnafMp7CBxoD47jF+FxL5fDq7Exf4ob/m4rZGzPncq9rbH6FCQAce9dKq7hHqH6tIdhXJP9bF3S+PFE= root@homelab.redhat.com"
+        state: present
+
