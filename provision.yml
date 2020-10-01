@@ -10,11 +10,11 @@
         state: present
         name: test1
         oauth_token: "{{ TOKEN }}"
-        size: 16gb
+        size: 4gb
         ssh_keys: 28018755
         unique_name: true
         region: nyc1
-        image: centos-8-x64
+        image: fedora-30-x64
     register: my_droplet
 
   - name: Debug the Ip Address out

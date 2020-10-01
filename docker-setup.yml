@@ -1,5 +1,5 @@
 - name: Playbook to setup docker and docker compose
-  hosts: localhost
+  hosts: all
   remote_user: root
 
   vars:

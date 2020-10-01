@@ -1,7 +1,7 @@
 - name: Create a GCP instance
   hosts: localhost
   vars:
-     gcp_project: ansible-tower-nived
+     gcp_project: "My First Project"
      gcp_cred_kind: serviceaccount
   tasks:
     - name: create a disk mapped from RHEL8 image
