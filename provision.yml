@@ -14,7 +14,7 @@
         ssh_keys: 28018755
         unique_name: true
         region: nyc1
-        image: fedora-30-x64
+        image: fedora-31-x64
     register: my_droplet
 
   - name: Debug the Ip Address out
