@@ -23,8 +23,8 @@
 
   - name: Add ssh key inside the droplet
     digital_ocean_sshkey:
-        name: laptop_key
+        name: cloud_key
         oauth_token: "{{ TOKEN }}"
-        ssh_pub_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPonz6lHyD/sMFY/NqNSg12wQhT484rq3Bpyg0OYzcEtDdB66Haaw6Y2VetaLWM3Tlq3PhZ9NjgdDN+7OB0+BDwRzi+8KrzUqgH3Xs8Zu+LAfQJ6j3LXsGwbdYqPEol4WzDqw1ik2fKvUWaxtUiMZqPfO0847PH3M86BAS6ZqYY0lDRvLNlotZfaYAk9C46JOAnpFRGfRSc2V8iJP7OHOUh0tVOBKEfy0wf99hAesJnnbXB8R+8Hl5kBiMO3UzFAUJdWoQB+bJ5FISl48iNjWnWw/5ZMR3HfA4HMjkqEQodsUbHsQ8gxAuObJbBLxFkovSL4W4Wio+xr2veYcs2Xj3ienOx0KSB33yYGzrEpcoftT0amXJlXxBwSsZPz9US4qf1vfD/e/ebEsVq4uWdWXCbbsmmiBh/+ziQ/BKAyfdHgFmBuUKRnafMp7CBxoD47jF+FxL5fDq7Exf4ob/m4rZGzPncq9rbH6FCQAce9dKq7hHqH6tIdhXJP9bF3S+PFE= root@homelab.redhat.com"
+        ssh_pub_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqhH5sWlIfJHhrjNp/mIxYuSS/suEQLUS1ZQKlihs07Jb5YiWrN0j7aXwYoECaVtbD3S1J5uwq9MJUqNHw6btCeKC34J8qg8m2vRW7SswnEJdasoHB3h9c9TVjdlukr9cOD/k80PRXCk2DTmDUngPUGJFzN8e6I2R0U/iOYm3npxk5zxfui7NQ/Vq1dVfZNQ5rUuDlySwgRgVuRXn9QQZmgo6ULu1DLe6Rtl6MwAqQ3GFE57B/xhBoBzfoEBMpJRZIzswTqD4OXm4YVlAbO3uXeC25L5NtqNKI0G7wM7fu3z+7q+6QF4FsVlo3a87Ea3cko2cm4okFtfS+kwvyJXf3PHRPou6DcFT6HXEAG8Qp8YnPmAHIm3KDvaEAPE43ZcJSTZuDJSMWOelYmMZk2ylel5oqKIya5QlQ0l/q6QqVRT//kYMhUuwnwTadBGFf3R3BiUuY8WDw4SIYTIxaSEhgyLE00I9z2hCABvoNBoD2y5ZEp8B3pOgPUXtvDrUJ9Lk= nivedv@homelab.redhat.com"
         state: present
 
