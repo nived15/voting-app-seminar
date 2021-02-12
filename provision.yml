@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: Provisioning digital ocean instance
+  hosts: localhost
   connection: local
   gather_facts: false
   vars_files: 
